@@ -1,0 +1,57 @@
+# ASP.NET Core / ASP.NET API essentials
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.log
+*.vs/
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*
+
+# Dotnet specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Dependencies
+node_modules/
+packages/
+wwwroot/lib/
+
+# Coverage results
+coverage/
+*.coverage
+*.coveragexml
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Windows files
+*.db
+*.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+*.dockerignore
