@@ -33,7 +33,10 @@ namespace ClientesApp.Infra.Data.Repositories
         {
             using (var dataContext = new DataContext())
             {
-                return dataContext.Clientes.OrderBy(c => c.Nome).ToList();
+                return dataContext.Clientes
+                    .Where(x => x.Ativo)
+                    .OrderBy(c => c.Nome)
+                    .ToList();
             }
         }
 
@@ -41,23 +44,25 @@ namespace ClientesApp.Infra.Data.Repositories
         {
             using (var dataContext = new DataContext())
             {
-                return dataContext.Clientes.FirstOrDefault(c => c.Id == id);
+                return dataContext.Clientes
+                    .Where(x => x.Ativo)
+                    .FirstOrDefault(c => c.Id == id);
             }
         }
 
-        public bool VerifyEmail(string email)
+        public bool VerifyEmail(string email, Guid clienteId)
         {
             using (var dataContext = new DataContext())
             {
-                return dataContext.Clientes.Any(c => c.Email.Equals(email));
+                return dataContext.Clientes.Any(c => c.Email.Equals(email) && c.Id != clienteId);
             }
         }
 
-        public bool VerifyCpf(string cpf)
+        public bool VerifyCpf(string cpf, Guid clienteId)
         {
             using (var dataContext = new DataContext())
             {
-                return dataContext.Clientes.Any(c => c.Cpf.Equals(cpf));
+                return dataContext.Clientes.Any(c => c.Cpf.Equals(cpf) && c.Id != clienteId);
             }
         }
     }

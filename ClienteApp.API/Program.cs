@@ -10,6 +10,7 @@ builder.Services.AddRouting(config =>
 });
 
 SwaggerConfiguration.AddSwaggerConfiguration(builder.Services);
+DependencyInjectionConfiguration.AddDependencyInjection(builder.Services);
 
 var app = builder.Build();
 
