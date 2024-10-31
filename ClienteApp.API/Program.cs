@@ -11,13 +11,13 @@ builder.Services.AddRouting(config =>
 
 SwaggerConfiguration.AddSwaggerConfiguration(builder.Services);
 DependencyInjectionConfiguration.AddDependencyInjection(builder.Services);
+CorsConfiguration.AddCorsConfiguration(builder.Services);
 
 var app = builder.Build();
 
 SwaggerConfiguration.UseSwaggerConfiguration(app);
-
+CorsConfiguration.UseCorsConfiguration(app);
 //app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();

@@ -15,7 +15,7 @@ namespace ClientesApp.Infra.Data.Repositories
         {
             using (var dataContext = new DataContext())
             {
-                dataContext.Clientes.Add(cliente);
+                dataContext.Add(cliente);
                 dataContext.SaveChanges();
             }
         }
@@ -24,7 +24,7 @@ namespace ClientesApp.Infra.Data.Repositories
         {
             using (var dataContext = new DataContext())
             {
-                dataContext.Clientes.Update(cliente);
+                dataContext.Update(cliente);
                 dataContext.SaveChanges();
             }
         }
@@ -33,7 +33,7 @@ namespace ClientesApp.Infra.Data.Repositories
         {
             using (var dataContext = new DataContext())
             {
-                return dataContext.Clientes
+                return dataContext.Set<Cliente>()
                     .Where(x => x.Ativo)
                     .OrderBy(c => c.Nome)
                     .ToList();
@@ -44,7 +44,7 @@ namespace ClientesApp.Infra.Data.Repositories
         {
             using (var dataContext = new DataContext())
             {
-                return dataContext.Clientes
+                return dataContext.Set<Cliente>()
                     .Where(x => x.Ativo)
                     .FirstOrDefault(c => c.Id == id);
             }
@@ -54,7 +54,7 @@ namespace ClientesApp.Infra.Data.Repositories
         {
             using (var dataContext = new DataContext())
             {
-                return dataContext.Clientes.Any(c => c.Email.Equals(email) && c.Id != clienteId);
+                return dataContext.Set<Cliente>().Any(c => c.Email.Equals(email) && c.Id != clienteId);
             }
         }
 
@@ -62,7 +62,7 @@ namespace ClientesApp.Infra.Data.Repositories
         {
             using (var dataContext = new DataContext())
             {
-                return dataContext.Clientes.Any(c => c.Cpf.Equals(cpf) && c.Id != clienteId);
+                return dataContext.Set<Cliente>().Any(c => c.Cpf.Equals(cpf) && c.Id != clienteId);
             }
         }
     }

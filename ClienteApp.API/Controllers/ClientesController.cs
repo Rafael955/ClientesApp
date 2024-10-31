@@ -145,6 +145,10 @@ namespace ClientesApp.API.Controllers
 
                 return StatusCode(200, response);
             }
+            catch (ApplicationException ex)
+            {
+                return StatusCode(422, new { ex.Message });
+            }
             catch (Exception ex)
             {
                 return StatusCode(500, new { ex.Message });

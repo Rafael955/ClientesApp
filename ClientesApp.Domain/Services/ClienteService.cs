@@ -204,6 +204,9 @@ namespace ClientesApp.Domain.Services
         {
             var cliente = _clienteRepository.GetById(id);
 
+            if (cliente == null)
+                throw new ApplicationException("Cliente não encontrado, verifique o ID informado.");
+
             var response = new ClienteResponseDto
             {
                 Id = cliente.Id,
@@ -213,8 +216,8 @@ namespace ClientesApp.Domain.Services
                 DataInclusao = cliente.DataInclusao,
                 DataUltimaAlteracao = cliente.DataUltimaAlteracao
             };
-        
+
             return response;
         }
-}
+    }
 }
