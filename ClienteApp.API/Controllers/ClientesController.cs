@@ -122,8 +122,12 @@ namespace ClientesApp.API.Controllers
             try
             {
                 var response = _clienteService.Consultar();
+                
+                if(response.Any())
+                    return StatusCode(200, response);
+                else
+                    return StatusCode(204, new { message = "Nenhum cliente encontrado." });
 
-                return StatusCode(200, response);
             }
             catch (Exception ex)
             {

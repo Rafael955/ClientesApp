@@ -13,7 +13,7 @@ namespace ClientesApp.API.Configurations
             {
                 options.AddPolicy("ClientesPolicy", builder =>
                 {
-                    builder.WithOrigins("http://localhost:4200/")
+                    builder.WithOrigins("http://localhost:4200")
                            .AllowAnyMethod()
                            .AllowAnyHeader();
                 });
