@@ -12,6 +12,7 @@ builder.Services.AddRouting(config =>
 SwaggerConfiguration.AddSwaggerConfiguration(builder.Services);
 DependencyInjectionConfiguration.AddDependencyInjection(builder.Services);
 CorsConfiguration.AddCorsConfiguration(builder.Services);
+JwtSecurityConfiguration.AddJwtSecurity(builder.Services);
 
 var app = builder.Build();
 

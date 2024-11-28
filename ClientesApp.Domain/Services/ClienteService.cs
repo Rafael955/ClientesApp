@@ -154,7 +154,7 @@ namespace ClientesApp.Domain.Services
 
             #endregion
 
-            #region Inativando o registro do cliente
+            #region Inativando o registro do cliente - Soft Delete
 
             cliente.Ativo = false;
             cliente.DataUltimaAlteracao = DateTime.Now;
