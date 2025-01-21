@@ -1,4 +1,5 @@
 ﻿using ClientesApp.Domain.Entities;
+using ClientesApp.Domain.Helpers;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,9 @@ namespace ClientesApp.Domain.Validations
                 .NotEmpty()
                     .WithMessage("O cpf do cliente é obrigatório.")
                 .Matches(@"^\d{11}$")
-                    .WithMessage("O cpf do cliente deve ter exatamente 11 dígitos.");
+                    .WithMessage("O cpf do cliente deve ter exatamente 11 dígitos.")
+                .Must(ValidationsHelper.IsValidCpf)
+                    .WithMessage("O número de cpf é inválido.");
 
             RuleFor(c => c.DataInclusao)
                 .NotEmpty()

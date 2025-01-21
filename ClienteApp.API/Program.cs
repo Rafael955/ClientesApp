@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddRouting(config => 
+builder.Services.AddRouting(config =>
 {
     config.LowercaseUrls = true;
 });
@@ -16,7 +16,9 @@ JwtSecurityConfiguration.AddJwtSecurity(builder.Services);
 
 var app = builder.Build();
 
-SwaggerConfiguration.UseSwaggerConfiguration(app);
+if (app.Environment.IsDevelopment())
+    SwaggerConfiguration.UseSwaggerConfiguration(app);
+
 CorsConfiguration.UseCorsConfiguration(app);
 //app.UseHttpsRedirection();
 app.UseAuthorization();
